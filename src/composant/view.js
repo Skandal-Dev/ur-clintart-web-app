@@ -1,13 +1,55 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
+import download,{ data, strFileName, strMimeType } from "downloadjs";
+import { useRef } from "react";
+import domtoimage from "dom-to-image";
+
+function exportToPng(dom) {
+    domtoimage
+      .toPng(dom)
+      .then(function (dataUrl) {
+        var img = new Image();
+        img.src = dataUrl;
+        document.body.appendChild(img);
+        var link = document.createElement('a');
+        link.download = 'card.png';
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch(function (error) {
+        console.error("oops, something went wrong!", error);
+      });
+  }
+
+
+  export  default function Button() {
+    const container = useRef(null);
+   
+    return (
+      <div className="button">
+        <View refference={container}></View>
+        <button className="btn btn-primary font-ur p-4 btn-lg play-button d-none d-md-inline-block position-relative l-height-5" 
+                onClick={() => exportToPng(container.current)}> Download </button>
+      </div>
+    );
+  }
 
 class View extends React.Component{
 
+    
+   
     render(){
+        
+
         return (
-            <div className="ur-card card-c">
+            <div  id="view">
+
+         
+            <div id="" className="ur-card card-c" ref={this.props.refference}>
                 
-                <img className="card-picture js-lazyload" src="https://s.acdn.ur-img.com/urimages/perso/ALLSTARS/ALLSTARS_FRANK_N1_HD_188.png" data-src="https://s.acdn.ur-img.com/urimages/perso/ALLSTARS/ALLSTARS_FRANK_N1_HD_188.png" alt="picture"/>
+                <img className="card-picture" src="https://s.acdn.ur-img.com/urimages/perso/ALLSTARS/ALLSTARS_FRANK_N1_HD_188.png" data-src="https://s.acdn.ur-img.com/urimages/perso/ALLSTARS/ALLSTARS_FRANK_N1_HD_188.png" alt="picture"/>
                     <div className="card-layer layer-c"></div>
                     <a className="card-link"></a>
                         <div className="card-top card-top-c">
@@ -33,11 +75,16 @@ class View extends React.Component{
 
                         </div>
                         <div className="card-bonus text-black">-2 Opp Power, Min 1</div>
+
+                        
                     </div>
+
+
+
+            </div>
                 
             
         );
     }
 }
 
-export default View;
