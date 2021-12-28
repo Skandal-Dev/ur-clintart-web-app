@@ -87,7 +87,14 @@ class Editor extends React.Component{
     }
 
     handleLvl(event){
-        this.setLvl(event.target.value);
+        let val0 = event.target.value
+        if (event.target.value > 5){
+            val0 = 5;
+        }
+
+        if (event.target.value < 2)
+            val0 = 2;
+        this.setLvl(val0);
     }
 
     setPower(val){
@@ -95,7 +102,14 @@ class Editor extends React.Component{
     }
 
     handlePower(event){
-        this.setPower(event.target.value);
+        let val0 = event.target.value;
+        if (event.target.value > 9){
+            val0 = 9;
+        }
+
+        if (event.target.value < 1)
+            val0 = 1;
+        this.setPower(val0);
     }
 
 
@@ -104,6 +118,13 @@ class Editor extends React.Component{
     }
 
     handleDamage(event){
+        let val0 = event.target.value;
+        if (event.target.value > 9){
+            val0 = 9;
+        }
+
+        if (event.target.value < 1)
+            val0 = 1;
         this.setDamage(event.target.value);
     }
 
@@ -121,6 +142,7 @@ class Editor extends React.Component{
     }
 
     handleLogo(event){
+       
         this.setLogo(event.target.value);
     }
 
