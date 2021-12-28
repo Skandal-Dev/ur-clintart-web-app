@@ -41,7 +41,7 @@ function exportToPng(dom, name) {
     const [img, setImg] = useState('');
     const [prismatic, setPrismatic] = useState('');
 
- 
+    
     return (
       <div className="button">
 
