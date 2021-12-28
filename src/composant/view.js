@@ -41,17 +41,26 @@ function exportToPng(dom, name) {
     const [img, setImg] = useState('');
     const [prismatic, setPrismatic] = useState('');
 
-    
+
     return (
       <div className="button">
 
         <div className="flex">
 
+
+        <div className="wrap">
+
+
         <View refference={container} 
         name_card={nameCard} damage={damage} power={power} ability={ability} 
         bonus={bonus} lvl={lvl} clan={clan} rarity={rarity} 
         img={img} prismatic={prismatic}>
+            
         </View>
+
+            <button className="btn btn-primary font-ur p-4 btn-lg play-button d-none d-md-inline-block l-height-5" 
+                onClick={() => exportToPng(container.current, nameCard)}> PNG DOWNLOAD </button>
+        </div>    
 
         <Editor name={nameCard} damage={damage} power={power} ability={ability} 
         bonus={bonus} lvl={lvl} clan={clan} rarity={rarity} 
@@ -67,8 +76,7 @@ function exportToPng(dom, name) {
 
         </div>
 
-        <button className="btn btn-primary font-ur p-4 btn-lg play-button d-none d-md-inline-block  l-height-5" 
-                onClick={() => exportToPng(container.current, nameCard)}> Download </button>
+        
       </div>
     );
   }

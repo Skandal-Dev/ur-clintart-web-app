@@ -160,62 +160,85 @@ class Editor extends React.Component{
         return ( 
             <div id="editor">
                
-                <div className="LogoForm">
-                    {arr}
+                <div className="flex-left">
+
+                    <div className="form-box">
+                        <label htmlFor=""> Clan</label>
+                        <div className="LogoForm">
+                            {arr}
+                        </div>
+                    </div>
+                   
+
+
+
+                    <div className="form-box">
+                    <label htmlFor=""> Rarity</label>
+
+                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-c.png"/>
+                        <input type="radio" onChange={this.handleRarity} name="rare" value="c"/>
+                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-u.png"/>
+                        <input type="radio" onChange={this.handleRarity} name="rare" value="u"/>
+                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-r.png"/>
+                        <input type="radio" onChange={this.handleRarity} name="rare" value="r"/>
+                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-cr.png"/>
+                        <input type="radio" onChange={this.handleRarity} name="rare" value="cr"/>
+                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-m.png"/>
+                        <input type="radio" onChange={this.handleRarity} name="rare" value="m"/>
+                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-l.png"/>
+                        <input type="radio" onChange={this.handleRarity} name="rare" value="l"/>
+                    </div>
+                
+
+            
+                    <div className="form-box">
+                         <label htmlFor=""> Card Name</label>
+
+                        <input placeholder={this.props.name} onChange={this.handleChangeName} type="text"/>
+                    </div>
+
+                
+
+                    <div className="form-box">
+                        <label htmlFor=""> Ability</label>
+
+                        <input placeholder={this.props.ability} onChange={this.handleAbility} type="text"/>
+                    </div>
+
+
+                   
+            
                 </div>
 
-                <label htmlFor="" >Card Name </label>
-                <br />
-                <input placeholder={this.props.name} onChange={this.handleChangeName} type="text"/>
-                <br />
-                <label htmlFor="">Ability </label>
-                <br />
-                <input placeholder={this.props.ability} onChange={this.handleAbility} type="text"/>
-                <br />
+                <div className="flex-right">
 
-                <label htmlFor="">Bonus </label>
-                <br />
-                <input placeholder={this.props.bonus} onChange={this.handleBonus} type="text"/>
-                <br />
-                <br />
 
-                <label htmlFor=""> Lvl</label>
-                <br />
-                <input placeholder={this.props.lvl} onChange={this.handleLvl} type="number" max={5} min={2}/>
-                <br />
-                <br />
+                <div className="form-box">
+                         <label htmlFor=""> Bonus</label>
+
+                        <input placeholder={this.props.bonus} onChange={this.handleBonus} type="text"/>
+                    </div>
+
+                    <div className="form-box">
+                         <label htmlFor=""> Level</label>
+                        <input placeholder={this.props.lvl} onChange={this.handleLvl} type="number" max={5} min={2}/>
+                    </div>
                 
-                <label>Rarity </label>
-                <br />
-                <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-c.png"/>
-                <input type="radio" onChange={this.handleRarity} name="rare" value="c"/>
-                <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-u.png"/>
-                <input type="radio" onChange={this.handleRarity} name="rare" value="u"/>
-                <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-r.png"/>
-                <input type="radio" onChange={this.handleRarity} name="rare" value="r"/>
-                <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-cr.png"/>
-                <input type="radio" onChange={this.handleRarity} name="rare" value="cr"/>
-                <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-m.png"/>
-                <input type="radio" onChange={this.handleRarity} name="rare" value="m"/>
-                <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-l.png"/>
-                <input type="radio" onChange={this.handleRarity} name="rare" value="l"/>
-
-                <br />
-                <br />
-
-                <label htmlFor=""> Power</label>
-                <br />
-                <input placeholder={this.props.power} onChange={this.handlePower} type="number" max={9} min={1}/>
-                <br />
-                <br />
-
-
-
-
-                <label htmlFor=""> Damage</label>
-                <br />
-                <input placeholder={this.props.damage} onChange={this.handleDamage} type="number" max={9} min={1}/>
+                    
                 
+
+                    <div className="form-box">
+                        <label htmlFor=""> Power</label>       
+                        <input placeholder={this.props.power} onChange={this.handlePower} type="number" max={9} min={1}/>
+                    </div>
+
+
+                    <div className="form-box">
+                        <label htmlFor=""> Damage</label>
+                        <input placeholder={this.props.damage} onChange={this.handleDamage} type="number" max={9} min={1}/>
+                    </div>
+
+                </div>
 
     
 

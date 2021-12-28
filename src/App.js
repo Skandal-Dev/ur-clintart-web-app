@@ -9,7 +9,7 @@ function App() {
       <div className="grid">
         <div className="box">
 
-          <h1 className='text-center white'>Urban Rivals Card Generator</h1>
+          
           <Button></Button>
           
         </div>
