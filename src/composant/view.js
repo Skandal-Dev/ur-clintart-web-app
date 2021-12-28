@@ -60,6 +60,9 @@ function exportToPng(dom, name) {
 
             <button className="btn btn-primary font-ur p-4 btn-lg play-button d-none d-md-inline-block l-height-5" 
                 onClick={() => exportToPng(container.current, nameCard)}> PNG DOWNLOAD </button>
+
+
+
         </div>    
 
         <Editor name={nameCard} damage={damage} power={power} ability={ability} 

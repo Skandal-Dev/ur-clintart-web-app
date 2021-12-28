@@ -105,3 +105,11 @@ input[type=text],input[type=number] {
   width: 100% !important;
 
 }
+
+#donate-button-container{
+  position: absolute;
+bottom: 15px;
+margin: auto;
+left: 50vw;
+  filter: opacity(0.5)
+}
