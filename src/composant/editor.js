@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import ImageUploader from "react-images-upload";
+
 const arr_logo = [
     "ALLSTARS",
     "BANGERS",
@@ -29,7 +31,37 @@ const arr_logo = [
     "ULUWATU",
     "UPPERS",
     "VORTEX",
+    "LEADER"
     ];
+
+
+class ImgFileUpload extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { pictures: "" };
+          this.onDrop = this.onDrop.bind(this);
+          
+        }
+      
+        onDrop(pictureFiles, pictureDataURLs) {
+          this.setState({
+            pictures: pictureDataURLs
+          });
+          this.props.setImg(pictureDataURLs);
+        }
+      
+        render() {
+          return (
+            <ImageUploader
+              withIcon={true}
+              buttonText="Choose image"
+              onChange={this.onDrop}
+              imgExtension={[".jpg", ".gif", ".png", ".gif", ".jpeg"]}
+              singleImage={true}
+            />
+          );
+        }
+      }
 
 class Editor extends React.Component{
 
@@ -42,8 +74,9 @@ class Editor extends React.Component{
             ability: this.props.ability,
             damage: this.props.damage,
             bonus: this.props.bonus,
-            lvl: this.props.lvl
-            
+            lvl: this.props.lvl,
+            rarity: this.props.rarity,
+            clan : this.props.logo
         };
         
         this.handleChangeName = this.handleChangeName.bind(this);
@@ -54,6 +87,7 @@ class Editor extends React.Component{
         this.handleDamage = this.handleDamage.bind(this);
         this.handleRarity = this.handleRarity.bind(this);
         this.handleLogo = this.handleLogo.bind(this);
+        this.handlePrismatic = this.handlePrismatic.bind(this);
         
     }
 
@@ -130,11 +164,16 @@ class Editor extends React.Component{
 
 
     setRarity(val){
-        this.props.setRarity(val);
+       
+            this.props.setRarity(val);
+        
     }
 
     handleRarity(event){
-        this.setRarity(event.target.value);
+        if (this.state.clan === "LEADER")
+            this.setRarity("leader");
+        else
+            this.setRarity(event.target.value);
     }
 
     setLogo(val){
@@ -142,12 +181,35 @@ class Editor extends React.Component{
     }
 
     handleLogo(event){
-       
+        if (event.target.value === "LEADER")
+        {
+            this.props.setRarity("leader")
+        }
+        else
+        {
+            if(this.state.rarity === "leader")
+                this.props.setRarity("c")
+            else
+                this.props.setRarity(this.state.rarity)
+
+        }
+
         this.setLogo(event.target.value);
     }
 
+    setPrismatic(val){
+        this.props.setPrismatic(val);
+    }
 
-    
+    handlePrismatic(event){
+        if (event.target.checked)
+            this.setPrismatic("prismatic");
+        else
+            this.setPrismatic("");
+
+    }
+
+        
    
 
 
@@ -174,7 +236,6 @@ class Editor extends React.Component{
 
                     <div className="form-box">
                     <label htmlFor=""> Rarity</label>
-
                         <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-c.png"/>
                         <input type="radio" onChange={this.handleRarity} name="rare" value="c"/>
                         <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-u.png"/>
@@ -205,8 +266,12 @@ class Editor extends React.Component{
                         <input placeholder={this.props.ability} onChange={this.handleAbility} type="text"/>
                     </div>
 
+                    <div className="form-box">
+                    <label htmlFor=""> Rarity </label>
 
-                   
+                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-prismatic.png"/>
+                        <input type="checkbox" onChange={this.handlePrismatic} name="prismatic"/>
+                    </div>
             
                 </div>
 
@@ -237,6 +302,8 @@ class Editor extends React.Component{
                         <label htmlFor=""> Damage</label>
                         <input placeholder={this.props.damage} onChange={this.handleDamage} type="number" max={9} min={1}/>
                     </div>
+
+                    <ImgFileUpload setImg={this.props.setImg}/>
 
                 </div>
 
