@@ -54,8 +54,11 @@ body{
   flex-direction: row;
   justify-content: baseline;
   justify-content: space-evenly;
-  padding: 50px
+  padding: 100px;
 
+}
+
+.ur-card{
 }
 
 .grid{
@@ -117,9 +120,9 @@ input[type=text],input[type=number] {
 }
 
 #donate-button-container{
-  position: absolute;
+right: 5px;
 bottom: 15px;
-margin: auto;
-left: 50vw;
-  filter: opacity(0.5)
+margin: auto 10px;
+  filter: opacity(0.5);
+  position: fixed;
 }

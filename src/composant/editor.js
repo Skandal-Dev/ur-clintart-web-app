@@ -210,7 +210,6 @@ class Editor extends React.Component{
     }
 
         
-   
 
 
     render(){
