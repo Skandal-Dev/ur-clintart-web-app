@@ -2,6 +2,16 @@ body{
   background-image: url(https://s.acdn.ur-img.com/img/v3/home/backgrounds/bg-night-1.jpg) !important;
 }
 
+.fileContainer{
+  background: #0000 !important;
+}
+
+
+.ur-card:hover img.card-picture{
+  z-index: 999 !important;
+  cursor: pointer !important;
+}
+
 
 .form-box{
   margin: 10px;
