@@ -7,6 +7,7 @@ import { useRef } from "react";
 import domtoimage from "dom-to-image";
 import Editor from "./editor";
 import { useState } from 'react';
+import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 
 
 
@@ -30,15 +31,15 @@ function exportToPng(dom, name) {
 
   export  default function Button() {
     const container = useRef(null);
-    const [nameCard, setNameCard] = useState("Card pute");
+    const [nameCard, setNameCard] = useState("3X2HASH");
     const [damage, setDamage] = useState(5);
     const [power, setPower] = useState(4);
     const [ability, setAbility] = useState("ability");
     const [bonus, setBonus] = useState("bonus");
     const [lvl, setLvl] = useState(4);
-    const [rarity, setRarity] = useState('r');
+    const [rarity, setRarity] = useState('m');
     const [clan, setClan] = useState('BERZERK');
-    const [img, setImg] = useState('');
+    const [img, setImg] = useState("https://pbs.twimg.com/media/E8pCxDsXsAAlNn0?format=jpg&name=large");
     const [prismatic, setPrismatic] = useState('');
 
 
@@ -71,7 +72,7 @@ function exportToPng(dom, name) {
         
         setNameCard={setNameCard} setDamage={setDamage} setPower={setPower} setAbility={setAbility} 
         setBonus={setBonus} setLvl={setLvl} setLogo={setClan} setRarity={setRarity}
-        setImg={setImg} setPrismatic={setPrismatic}>
+        setImg={setImg} setPrismatic={setPrismatic} setImg={setImg}>
         
 
         </Editor>
@@ -126,8 +127,10 @@ class View extends React.Component{
 
            
             <div id="" className={`ur-card card-${this.props.rarity} ${prism}`} ref={this.props.refference}>
-                
-                <img className="card-picture" src="https://s.acdn.ur-img.com/urimages/perso/ALLSTARS/ALLSTARS_FRANK_N1_HD_188.png" data-src="https://s.acdn.ur-img.com/urimages/perso/ALLSTARS/ALLSTARS_FRANK_N1_HD_188.png" alt="picture"/>
+                <Draggable>
+                <img draggable="false" className="card-picture" src={this.props.img} data-src="" alt="picture"/>
+
+                </Draggable>
                     <div className={`card-layer layer-${this.props.rarity} ${prism}`}></div>
                     <a className="card-link"></a>
                         <div className={`card-top card-top-${this.props.rarity} ${prism}`}>
