@@ -50,7 +50,8 @@ function exportToPng(dom, name) {
     html2canvas(document.getElementById('card'), {  proxy: "http://localhost:3030", 
                                                     useCORS: true, 
                                                     backgroundColor: null,
-                                                    scale: 2
+                                                    scale: 2,
+                                                    allowTaint: true
                                                 })
     .then(function(canvas) {
         //document.body.appendChild(canvas);

@@ -266,10 +266,9 @@ class Editor extends React.Component{
                     </div>
 
                     <div className="form-box">
-                    <label htmlFor=""> Rarity </label>
+                         <label htmlFor=""> Bonus</label>
 
-                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-prismatic.png"/>
-                        <input type="checkbox" onChange={this.handlePrismatic} name="prismatic"/>
+                        <input placeholder={this.props.bonus} onChange={this.handleBonus} type="text"/>
                     </div>
             
                 </div>
@@ -277,11 +276,7 @@ class Editor extends React.Component{
                 <div className="flex-right">
 
 
-                <div className="form-box">
-                         <label htmlFor=""> Bonus</label>
-
-                        <input placeholder={this.props.bonus} onChange={this.handleBonus} type="text"/>
-                    </div>
+           
 
                     <div className="form-box">
                          <label htmlFor=""> Level</label>
@@ -302,7 +297,16 @@ class Editor extends React.Component{
                         <input placeholder={this.props.damage} onChange={this.handleDamage} type="number" max={9} min={1}/>
                     </div>
 
-                    <ImgFileUpload setImg={this.props.setImg}/>
+                    <div className="form-box" style={{'cursor':'not-allowed'}}>
+                    <label htmlFor=""> Prismatic </label>
+
+                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-prismatic.png"/>
+                        <input type="checkbox" disabled onChange={this.handlePrismatic} name="prismatic"/>
+                    </div>
+
+                    <div className="form-box">
+                        <ImgFileUpload setImg={this.props.setImg}/>
+                    </div>
 
                 </div>
 
