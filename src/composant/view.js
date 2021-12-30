@@ -1,18 +1,38 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM, { render } from "react-dom";
 import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import download,{ data, strFileName, strMimeType } from "downloadjs";
 import { useRef } from "react";
-import domtoimage from "dom-to-image";
+//import domtoimage from "dom-to-image";
 import Editor from "./editor";
 import { useState } from 'react';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
+import html2canvas from 'html2canvas';
+
+function resizeCanvas(canvas, newHeight, newWidth)
+{
+        var context = canvas.getContext('2d');
+        var imageData = context.getImageData(0, 0, canvas.width, canvas.width);
+        var newCanvas = document.createElement("canvas");
+        newCanvas.height = canvas.height;
+        newCanvas.width = canvas.width;
+        newCanvas.putImageData(imageData, 0, 0, 0, 0, newWidth, newHeight);
+        return newCanvas;
+}
 
 
+export function modal(){
+
+    return
+        <div id="modal">
+            coucou
+        </div>
+    ;
+}
 
 function exportToPng(dom, name) {
-    domtoimage
+    /*domtoimage
       .toPng(dom)
       .then(function (dataUrl) {
         var img = new Image();
@@ -25,7 +45,22 @@ function exportToPng(dom, name) {
       })
       .catch(function (error) {
         console.error("oops, something went wrong!", error);
-      });
+      });*/
+
+    html2canvas(document.getElementById('card'), {  proxy: "http://localhost:3030", 
+                                                    useCORS: true, 
+                                                    backgroundColor: null,
+                                                    scale: 2
+                                                })
+    .then(function(canvas) {
+        //document.body.appendChild(canvas);
+        const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+        const a = document.createElement('a')
+        a.setAttribute('download', name+'.png')
+        a.setAttribute('href', image)
+        a.click()
+        canvas.remove()
+    });
   }
 
 
@@ -126,7 +161,7 @@ class View extends React.Component{
             <div  id="view">
 
            
-            <div id="" className={`ur-card card-${this.props.rarity} ${prism}`} ref={this.props.refference}>
+            <div id="card" className={`ur-card card-${this.props.rarity} ${prism}`} ref={this.props.refference}>
                 <Draggable>
                 <img draggable="false" className="card-picture" src={this.props.img} data-src="" alt="picture"/>
 
