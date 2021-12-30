@@ -12,6 +12,16 @@ body{
   cursor: pointer !important;
 }
 
+.ur-card {
+  border-radius: 14px !important;
+  width: 168px !important;
+  height: 237px !important;
+  color: #fff !important;
+  text-align: left !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
 
 .form-box{
   margin: 10px;
