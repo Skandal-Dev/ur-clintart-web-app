@@ -22,6 +22,42 @@ body{
   overflow: hidden !important;
 }
 
+/***************************/
+.ur-card {
+  border-radius: 14px !important;
+  color: #fff !important;
+  height: 237px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  text-align: left !important;
+  width: 168px !important;
+}
+.card-m {
+  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
+}
+.card-back-l, .card-m {
+  background-size: contain;
+}
+.ur-card {
+  border-radius: 14px;
+  width: 168px;
+  height: 237px;
+  color: #fff;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+.ur-card {
+  transition: box-shadow .2s ease;
+  transform: translateZ(0);
+  z-index: 10;
+  outline: 1px solid transparent;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+/***************************/
+
 
 .form-box{
   margin: 10px;
