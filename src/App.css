@@ -7,6 +7,37 @@ body{
 }
 
 
+@media screen and (max-width: 1354px) {
+
+    .grid{
+      grid-template-columns: 0vw auto 0vw !important;
+    }
+    .flex{
+      display: flex;
+      flex-direction:column !important;
+    }
+    
+    #editor{
+      flex-direction: column !important;
+      margin: 0 0vw !important;
+    }
+
+    .view{
+      padding: 0 !important;
+    }
+    .LogoForm {
+      width: 100% !important;
+    }
+  
+ }
+
+
+
+
+
+
+
+
 .ur-card:hover img.card-picture{
   z-index: 999 !important;
   cursor: pointer !important;
