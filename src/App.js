@@ -9,6 +9,7 @@ function App() {
     <div className="App">
       <div className="grid">
         <div className="box">
+          <h4 class="stroke">Urban Rivals Card Generator</h4>
 
           
           <Button></Button>
