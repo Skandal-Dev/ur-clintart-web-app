@@ -11,7 +11,7 @@ body{
 
     .grid{
       margin-top: 0 !important;
-      grid-template-columns: 0vw 100vw 0vw !important;
+      grid-template-columns: 2vw 1fr 2vw !important;
     }
     .flex{
       display: flex;
@@ -44,11 +44,77 @@ body{
 }
 
 
+.card-bottom {
+  width: 150px !important;
+  height: 89px !important;
+  position: absolute !important;
+  bottom: 7px !important;
+  left: 12px !important;
+  z-index: 4 !important;
+}
 
 
+.card-top {
+	width: 159px !important;
+	height: 37px !important;
+	position: absolute !important;
+	top: 0 !important;
+	left: 7px !important;
+}
 
 
+.card-progress {
+  background: none !important;
+  width: 87px !important;
+  height: 19px !important;
+  position: relative !important;
+  top: 12px !important;
+  left: 29px !important;
+  overflow: visible !important;
+}
 
+.card-power {
+	top: 21px !important;
+}
+
+.card-damage {
+	top: 62px !important;
+}
+
+.card-ability {
+	width: 100px !important;
+	height: 26px !important;
+	margin: 18px 0 0 auto !important;
+	font-size: .6rem !important;
+	line-height: 1.2 !important;
+	text-shadow: 0 0 1px #000 !important;
+}
+
+.card-bonus {
+	width: 100px !important;
+	height: 26px !important;
+	margin: 0 0 0 auto !important;
+	font-size: .6rem !important;
+	line-height: 1.2 !important;
+	text-shadow: 0 0 1px #000 !important;
+}
+
+.card-stars {
+  width: 100% !important;
+  height: 100% !important;
+  padding-top: 3px !important;
+  text-align: center !important;
+  position: absolute !important;
+  top: 0 !important;
+  z-index: 1 !important;
+}
+
+.card-progress .progress-bar {
+  line-height: 8px !important;
+  background-color: transparent !important;
+  
+  background-size: auto 100% !important;
+}
 
 .ur-card:hover img.card-picture{
   z-index: 999 !important;
