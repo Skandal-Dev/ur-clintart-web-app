@@ -1,5 +1,3 @@
 # Urban Rivals Clintart Card Generator
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Image](https://media.giphy.com/media/u2aOZBXSljwf88Kvea/giphy.gif)
