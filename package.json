@@ -16,6 +16,7 @@
     "react-draggable": "^4.4.4",
     "react-images-upload": "^1.2.8",
     "react-scripts": "5.0.0",
+    "simple-image-cdn": "^0.0.7",
     "web-vitals": "^2.1.2"
   },
   "scripts": {

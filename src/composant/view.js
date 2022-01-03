@@ -9,6 +9,8 @@ import Editor from "./editor";
 import { useState } from 'react';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 import html2canvas from 'html2canvas';
+import getImageUrl from 'simple-image-cdn';
+
 
 function resizeCanvas(canvas, newHeight, newWidth)
 {
@@ -60,6 +62,8 @@ function exportToPng(dom, name) {
         a.setAttribute('download', name+'.png')
         a.setAttribute('href', image)
         a.click()
+        const src = getImageUrl(image, {w: '100', h: '100', fit: 'cover' });
+        console.log(src);
         canvas.remove()
     });
   }
