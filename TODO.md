@@ -5,3 +5,4 @@
 - Handle software migration with Electron.js
 - Handle App migration on mobile browser
 - Glow up interface color palette & Background
+- Resize Image Component react
