@@ -91,6 +91,7 @@ function exportToPng(dom, name) {
 
         <div className="wrap">
 
+        <h4 class="stroke">Urban Rivals Card Generator</h4>
 
         <View refference={container} 
         name_card={nameCard} damage={damage} power={power} ability={ability} 
