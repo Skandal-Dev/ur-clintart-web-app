@@ -159,7 +159,7 @@ class Editor extends React.Component{
 
         if (event.target.value < 1)
             val0 = 1;
-        this.setDamage(event.target.value);
+        this.setDamage(val0);
     }
 
 
