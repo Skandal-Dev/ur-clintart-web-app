@@ -56,7 +56,7 @@ function exportToPng(dom, name) {
                                                     allowTaint: true
                                                 })
     .then(function(canvas) {
-        //document.body.appendChild(canvas);
+        document.body.appendChild(canvas);
         const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
         const a = document.createElement('a')
         a.setAttribute('download', name+'.png')
@@ -91,7 +91,9 @@ function exportToPng(dom, name) {
 
         <div className="wrap">
 
-        <h4 class="stroke">Urban Rivals Card Generator</h4>
+        <h4 class="stroke white">Urban Rivals Card Generator</h4>
+
+        
 
         <View refference={container} 
         name_card={nameCard} damage={damage} power={power} ability={ability} 
@@ -100,9 +102,13 @@ function exportToPng(dom, name) {
             
         </View>
 
-            <button className="btn btn-primary font-ur p-4 btn-lg play-button d-none d-md-inline-block l-height-5" 
-                onClick={() => exportToPng(container.current, nameCard)}> PNG DOWNLOAD </button>
+            <button className="btn btn-primary sp  p-4 btn-lg play-button d-none d-md-inline   -block l-height-5" 
+                onClick={() => exportToPng(container.current, nameCard)}> IMAGE DDL </button>
+            
+            <button className="btn btn-primary sp p-4 btn-lg play-button d-none d-md-inline-block l-height-5" >
 
+                take a screenshot for PRISMATIC & GIF version
+            </button>
 
 
         </div>    

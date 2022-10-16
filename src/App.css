@@ -188,8 +188,47 @@ body{
   width: 168px !important;
 }
 .card-m {
-  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
+  background-image: url(ur-clintart/card-bg/bg-card-mt.gif);
 }
+
+
+
+.card-u {
+  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
+  background-image: url(ur-clintart/card-bg/bg-card-u.gif);
+}
+
+.card-c {
+  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
+  background-image: url(ur-clintart/card-bg/bg-card-c.gif);
+  
+}
+
+
+.sp{
+  color: white !important;
+}
+
+
+.card-r {
+  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
+  background-image: url(ur-clintart/card-bg/bg-card-r.gif);
+
+}
+
+.card-cr {
+  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
+  background-image: url(ur-clintart/card-bg/bg-card-cr.gif);
+
+}
+
+
+.card-l {
+  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
+  background-image: url(ur-clintart/card-bg/bg-card-ld.gif);
+
+}
+
 .card-back-l, .card-m {
   background-size: contain;
 }

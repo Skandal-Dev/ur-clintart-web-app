@@ -301,7 +301,7 @@ class Editor extends React.Component{
                     <label htmlFor=""> Prismatic </label>
 
                         <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-prismatic.png"/>
-                        <input type="checkbox" disabled onChange={this.handlePrismatic} name="prismatic"/>
+                        <input type="checkbox" onChange={this.handlePrismatic} name="prismatic"/>
                     </div>
 
                     <div className="form-box">
