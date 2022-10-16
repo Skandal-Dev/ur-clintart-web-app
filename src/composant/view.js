@@ -24,14 +24,7 @@ function resizeCanvas(canvas, newHeight, newWidth)
 }
 
 
-export function modal(){
 
-    return
-        <div id="modal">
-            coucou
-        </div>
-    ;
-}
 
 function exportToPng(dom, name) {
     /*domtoimage
@@ -56,7 +49,7 @@ function exportToPng(dom, name) {
                                                     allowTaint: true
                                                 })
     .then(function(canvas) {
-        document.body.appendChild(canvas);
+        //document.body.appendChild(canvas);
         const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
         const a = document.createElement('a')
         a.setAttribute('download', name+'.png')
