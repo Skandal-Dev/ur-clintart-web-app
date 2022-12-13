@@ -31,7 +31,7 @@ const arr_logo = [
     "ULUWATU",
     "UPPERS",
     "VORTEX",
-    "LEADER"
+    "OBLIVION",
     ];
 
 
@@ -163,17 +163,20 @@ class Editor extends React.Component{
     }
 
 
-    setRarity(val){
-       
-            this.props.setRarity(val);
-        
+    setRarity(val)
+    {
+        this.props.setRarity(val);
     }
 
     handleRarity(event){
-        if (this.state.clan === "LEADER")
-            this.setRarity("leader");
+        if ( event.target.value  === "leader" || event.target.value === "oculus")
+        {
+            this.handleLogo(event)
+            this.setRarity(event.target.value);
+        }
         else
             this.setRarity(event.target.value);
+
     }
 
     setLogo(val){
@@ -181,20 +184,17 @@ class Editor extends React.Component{
     }
 
     handleLogo(event){
-        if (event.target.value === "LEADER")
+       
+        if (event.target.value === "oculus" || event.target.value === "leader" || this.props.clan === 'LEADER' || this.props.clan === 'OCULUS')
         {
-            this.props.setRarity("leader")
+            this.setLogo(event.target.value.toUpperCase())
+            this.setRarity(event);
         }
-        else
-        {
-            if(this.state.rarity === "leader")
-                this.props.setRarity("c")
-            else
-                this.props.setRarity(this.state.rarity)
-
+        else{
+            this.setLogo(event.target.value);
+            this.setRarity('c')
         }
-
-        this.setLogo(event.target.value);
+            
     }
 
     setPrismatic(val){
@@ -247,6 +247,8 @@ class Editor extends React.Component{
                         <input type="radio" onChange={this.handleRarity} name="rare" value="m"/>
                         <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-l.png"/>
                         <input type="radio" onChange={this.handleRarity} name="rare" value="l"/>
+                        <img src={`https://s.acdn.ur-img.com/urimages/clan/OCULUS_42.png`}/><input type="radio" name="rare" value="oculus"  onChange={this.handleRarity}/>
+                        <img src={`https://s.acdn.ur-img.com/urimages/clan/LEADER_42.png`}/><input type="radio" name="rare" value="leader"  onChange={this.handleRarity}/>
                     </div>
                 
 
