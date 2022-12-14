@@ -83,8 +83,8 @@ function exportToPng(dom, name) {
 
 
         <div className="wrap">
-
-        <h4 class="stroke white">Urban Rivals Card Generator</h4>
+        <img id="logo" class="img-fluid" src="https://s.acdn.ur-img.com/img/v3/landingv4/urban-rivals-logo.png" alt="Urban Rivals Logo"  />
+        <h4 class="stroke white">Card Generator</h4>
 
 
 
@@ -94,7 +94,7 @@ function exportToPng(dom, name) {
         img={img} prismatic={prismatic}>
 
         </View>
-
+        <div id="b">
             <button className="btn btn-primary sp  p-4 btn-lg play-button d-none d-md-inline   -block l-height-5"
                 onClick={() => exportToPng(container.current, nameCard)}> IMAGE DDL </button>
 
@@ -102,7 +102,7 @@ function exportToPng(dom, name) {
 
                 take a screenshot for PRISMATIC & GIF version
             </button>
-
+        </div>
 
         </div>
 

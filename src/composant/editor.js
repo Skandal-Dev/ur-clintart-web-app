@@ -6,7 +6,7 @@ const arr_logo = [
     "ALLSTARS",
     "BANGERS",
     "BERZERK",
-    "DOMINION", 
+    "DOMINION",
     "FANGPICLANG",
     "FREAKS",
     "FROZN",
@@ -40,16 +40,16 @@ class ImgFileUpload extends React.Component {
           super(props);
           this.state = { pictures: "" };
           this.onDrop = this.onDrop.bind(this);
-          
+
         }
-      
+
         onDrop(pictureFiles, pictureDataURLs) {
           this.setState({
             pictures: pictureDataURLs
           });
           this.props.setImg(pictureDataURLs);
         }
-      
+
         render() {
           return (
             <ImageUploader
@@ -78,7 +78,7 @@ class Editor extends React.Component{
             rarity: this.props.rarity,
             clan : this.props.logo
         };
-        
+
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleAbility = this.handleAbility.bind(this);
         this.handleBonus = this.handleBonus.bind(this);
@@ -88,7 +88,7 @@ class Editor extends React.Component{
         this.handleRarity = this.handleRarity.bind(this);
         this.handleLogo = this.handleLogo.bind(this);
         this.handlePrismatic = this.handlePrismatic.bind(this);
-        
+
     }
 
     setName(val){
@@ -174,8 +174,12 @@ class Editor extends React.Component{
             this.handleLogo(event)
             this.setRarity(event.target.value);
         }
-        else
-            this.setRarity(event.target.value);
+        else{
+          this.setRarity(event.target.value);
+          if (this.props.clan === "LEADER" || this.props.clan == "OCULUS"){
+            this.setLogo("ALLSTARS");
+          }
+        }
 
     }
 
@@ -184,17 +188,17 @@ class Editor extends React.Component{
     }
 
     handleLogo(event){
-       
+
         if (event.target.value === "oculus" || event.target.value === "leader" || this.props.clan === 'LEADER' || this.props.clan === 'OCULUS')
         {
             this.setLogo(event.target.value.toUpperCase())
-            this.setRarity(event);
+            this.setRarity("c");
         }
         else{
             this.setLogo(event.target.value);
             this.setRarity('c')
         }
-            
+
     }
 
     setPrismatic(val){
@@ -209,7 +213,7 @@ class Editor extends React.Component{
 
     }
 
-        
+
 
 
     render(){
@@ -218,9 +222,9 @@ class Editor extends React.Component{
             for (let index = 0; index < arr_logo.length; index++) {
                 arr.push(<div key={index}><img src={`https://s.acdn.ur-img.com/urimages/clan/${arr_logo[index]}_42.png`}/><input type="radio" name="logo" value={arr_logo[index]} onChange={this.handleLogo}/></div>);
             }
-        return ( 
+        return (
             <div id="editor">
-               
+
                 <div className="flex-left">
 
                     <div className="form-box">
@@ -229,7 +233,7 @@ class Editor extends React.Component{
                             {arr}
                         </div>
                     </div>
-                   
+
 
 
 
@@ -247,19 +251,19 @@ class Editor extends React.Component{
                         <input type="radio" onChange={this.handleRarity} name="rare" value="m"/>
                         <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-l.png"/>
                         <input type="radio" onChange={this.handleRarity} name="rare" value="l"/>
-                        <img src={`https://s.acdn.ur-img.com/urimages/clan/OCULUS_42.png`}/><input type="radio" name="rare" value="oculus"  onChange={this.handleRarity}/>
-                        <img src={`https://s.acdn.ur-img.com/urimages/clan/LEADER_42.png`}/><input type="radio" name="rare" value="leader"  onChange={this.handleRarity}/>
+                        <img height="25" src={`https://s.acdn.ur-img.com/urimages/clan/OCULUS_42.png`}/><input type="radio" name="rare" value="oculus"  onChange={this.handleRarity}/>
+                        <img height="25" src={`https://s.acdn.ur-img.com/urimages/clan/LEADER_42.png`}/><input type="radio" name="rare" value="leader"  onChange={this.handleRarity}/>
                     </div>
-                
 
-            
+
+
                     <div className="form-box">
                          <label htmlFor=""> Card Name</label>
 
                         <input placeholder={this.props.name} onChange={this.handleChangeName} type="text"/>
                     </div>
 
-                
+
 
                     <div className="form-box">
                         <label htmlFor=""> Ability</label>
@@ -272,24 +276,24 @@ class Editor extends React.Component{
 
                         <input placeholder={this.props.bonus} onChange={this.handleBonus} type="text"/>
                     </div>
-            
+
                 </div>
 
                 <div className="flex-right">
 
 
-           
+
 
                     <div className="form-box">
                          <label htmlFor=""> Level</label>
                         <input placeholder={this.props.lvl} onChange={this.handleLvl} type="number" max={5} min={2}/>
                     </div>
-                
-                    
-                
+
+
+
 
                     <div className="form-box">
-                        <label htmlFor=""> Power</label>       
+                        <label htmlFor=""> Power</label>
                         <input placeholder={this.props.power} onChange={this.handlePower} type="number" max={9} min={1}/>
                     </div>
 
@@ -312,7 +316,7 @@ class Editor extends React.Component{
 
                 </div>
 
-    
+
 
             </div>
         );
