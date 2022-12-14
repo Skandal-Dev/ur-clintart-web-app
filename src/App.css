@@ -6,6 +6,11 @@ body{
   background: #0000 !important;
 }
 
+.button-prism{
+  margin: auto;
+  display: block;
+  margin-top: 5px;
+}
 
 @media screen and (max-width: 1354px) {
 
@@ -17,7 +22,7 @@ body{
       display: flex;
       flex-direction:column !important;
     }
-    
+
     #editor{
       flex-direction: column !important;
       margin: 0 0vw !important;
@@ -82,7 +87,7 @@ body{
     left: 4px !important;
     z-index: 3 !important;
   }
-  
+
  }
 
 .l-height-5{
@@ -158,7 +163,7 @@ body{
 .card-progress .progress-bar {
   line-height: 8px !important;
   background-color: transparent !important;
-  
+
   background-size: auto 100% !important;
 }
 
@@ -201,7 +206,7 @@ body{
 .card-c {
   /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
   background-image: url(ur-clintart/card-bg/bg-card-c.gif);
-  
+
 }
 
 
@@ -260,7 +265,7 @@ body{
   border-radius: 4px;
   color:rgb(230, 214, 214) !important;
   box-shadow: inset 0px 0px 8px #3c3b3b1a;
-  
+
 }
 
 .form-box label{
@@ -321,7 +326,7 @@ body{
   background: #1a0f38eb;
   transform: scale(1.1);
   box-shadow: 0px 0px 5px #1f2629a6;
-  
+
 }
 
 .l-height-5{

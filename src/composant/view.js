@@ -42,8 +42,8 @@ function exportToPng(dom, name) {
         console.error("oops, something went wrong!", error);
       });*/
 
-    html2canvas(document.getElementById('card'), {  proxy: "http://localhost:3030", 
-                                                    useCORS: true, 
+    html2canvas(document.getElementById('card'), {  proxy: "http://localhost:3030",
+                                                    useCORS: true,
                                                     backgroundColor: null,
                                                     scale: 2,
                                                     allowTaint: true
@@ -86,41 +86,41 @@ function exportToPng(dom, name) {
 
         <h4 class="stroke white">Urban Rivals Card Generator</h4>
 
-        
 
-        <View refference={container} 
-        name_card={nameCard} damage={damage} power={power} ability={ability} 
-        bonus={bonus} lvl={lvl} clan={clan} rarity={rarity} 
+
+        <View refference={container}
+        name_card={nameCard} damage={damage} power={power} ability={ability}
+        bonus={bonus} lvl={lvl} clan={clan} rarity={rarity}
         img={img} prismatic={prismatic}>
-            
+
         </View>
 
-            <button className="btn btn-primary sp  p-4 btn-lg play-button d-none d-md-inline   -block l-height-5" 
+            <button className="btn btn-primary sp  p-4 btn-lg play-button d-none d-md-inline   -block l-height-5"
                 onClick={() => exportToPng(container.current, nameCard)}> IMAGE DDL </button>
-            
-            <button className="btn btn-primary sp p-4 btn-lg play-button d-none d-md-inline-block l-height-5" >
+
+            <button className="btn button-prism" >
 
                 take a screenshot for PRISMATIC & GIF version
             </button>
 
 
-        </div>    
+        </div>
 
-        <Editor name={nameCard} damage={damage} power={power} ability={ability} 
-        bonus={bonus} lvl={lvl} clan={clan} rarity={rarity} 
+        <Editor name={nameCard} damage={damage} power={power} ability={ability}
+        bonus={bonus} lvl={lvl} clan={clan} rarity={rarity}
         img={img} prismatic={prismatic}
-        
-        setNameCard={setNameCard} setDamage={setDamage} setPower={setPower} setAbility={setAbility} 
+
+        setNameCard={setNameCard} setDamage={setDamage} setPower={setPower} setAbility={setAbility}
         setBonus={setBonus} setLvl={setLvl} setLogo={setClan} setRarity={setRarity}
         setImg={setImg} setPrismatic={setPrismatic} setImg={setImg}>
-        
+
 
         </Editor>
 
 
         </div>
 
-        
+
       </div>
     );
   }
@@ -151,10 +151,10 @@ export function Stars(lvl){
 class View extends React.Component{
 
     // Receive props
-   
+
     render(){
-        
-       
+
+
         let lvl = this.props.lvl;
         let prism = "";
         if (this.props.prismatic)
@@ -165,7 +165,7 @@ class View extends React.Component{
         return (
             <div  id="view">
 
-           
+
             <div id="card" className={`ur-card card-${this.props.rarity} ${prism}`} ref={this.props.refference}>
                 <Draggable>
                 <img draggable="false" className="card-picture" src={this.props.img} data-src="" alt="picture"/>
@@ -175,7 +175,7 @@ class View extends React.Component{
                     <a className="card-link"></a>
                         <div className={`card-top card-top-${this.props.rarity} ${prism}`}>
                             <a className="card-clan-link">
-                          
+
                                 <img className="card-clan img-fluid" src={`https://s.acdn.ur-img.com/urimages/clan/${this.props.clan}_42.png`} alt="All Stars"/>
                             </a>
                         <span className="h6 card-name m-0">{this.props.name_card}</span>
@@ -184,9 +184,9 @@ class View extends React.Component{
                         <div className="progress card-progress">
                             <div className="progress-bar" role="progressbar" style={{width: "100%"}}></div>
                         <div className="card-stars">
-                                
+
                                 <Stars lvl={this.props.lvl}></Stars>
-                            
+
                             </div>
                             </div>
                             <div className="h5 card-power m-0">{this.props.power}</div>
@@ -198,15 +198,14 @@ class View extends React.Component{
 
                         </div>
 
-                        
+
                     </div>
 
 
-                    
+
             </div>
-                
-            
+
+
         );
     }
 }
-
