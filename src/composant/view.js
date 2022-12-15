@@ -74,6 +74,7 @@ function exportToPng(dom, name) {
     const [clan, setClan] = useState('BERZERK');
     const [img, setImg] = useState("https://pbs.twimg.com/media/E8pCxDsXsAAlNn0?format=jpg&name=large");
     const [prismatic, setPrismatic] = useState('');
+    const [imageSize, setImageSize] = useState(100);
 
 
     return (
@@ -91,7 +92,7 @@ function exportToPng(dom, name) {
         <View refference={container}
         name_card={nameCard} damage={damage} power={power} ability={ability}
         bonus={bonus} lvl={lvl} clan={clan} rarity={rarity}
-        img={img} prismatic={prismatic}>
+        img={img} prismatic={prismatic} imageSize={imageSize}>
 
         </View>
         <div id="b">
@@ -112,7 +113,7 @@ function exportToPng(dom, name) {
 
         setNameCard={setNameCard} setDamage={setDamage} setPower={setPower} setAbility={setAbility}
         setBonus={setBonus} setLvl={setLvl} setLogo={setClan} setRarity={setRarity}
-        setImg={setImg} setPrismatic={setPrismatic} setImg={setImg}>
+        setImg={setImg} setPrismatic={setPrismatic} setImg={setImg} setImageSize={setImageSize}>
 
 
         </Editor>
@@ -165,10 +166,9 @@ class View extends React.Component{
         return (
             <div  id="view">
 
-
             <div id="card" className={`ur-card card-${this.props.rarity} ${prism}`} ref={this.props.refference}>
                 <Draggable>
-                <img draggable="false" className="card-picture" src={this.props.img} data-src="" alt="picture"/>
+                <img draggable="false" className="card-picture" src={this.props.img} style={{width: `${this.props.imageSize}%`}} data-src="" alt="picture"/>
 
                 </Draggable>
                     <div className={`card-layer layer-${this.props.rarity} ${prism}`}></div>

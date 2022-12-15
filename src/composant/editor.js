@@ -76,7 +76,8 @@ class Editor extends React.Component{
             bonus: this.props.bonus,
             lvl: this.props.lvl,
             rarity: this.props.rarity,
-            clan : this.props.logo
+            clan : this.props.logo,
+            imageSize: this.props.imageSize
         };
 
         this.handleChangeName = this.handleChangeName.bind(this);
@@ -88,8 +89,19 @@ class Editor extends React.Component{
         this.handleRarity = this.handleRarity.bind(this);
         this.handleLogo = this.handleLogo.bind(this);
         this.handlePrismatic = this.handlePrismatic.bind(this);
+        this.handleImageSize = this.handleImageSize.bind(this);
 
     }
+
+    setImageSize(val){
+      this.props.setImageSize(val);
+    }
+
+    handleImageSize(event){
+      this.setImageSize(event.target.value)
+    }
+
+
 
     setName(val){
         this.props.setNameCard(val);
@@ -275,6 +287,12 @@ class Editor extends React.Component{
                          <label htmlFor=""> Bonus</label>
 
                         <input placeholder={this.props.bonus} onChange={this.handleBonus} type="text"/>
+                    </div>
+
+                    <div className="form-box" >
+                    <label htmlFor=""> Image size </label>
+
+                        <input type="range" onChange={this.handleImageSize} min="0" max="200" name="imagesize"/>
                     </div>
 
                 </div>
