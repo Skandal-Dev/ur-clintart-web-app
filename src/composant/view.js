@@ -62,6 +62,23 @@ function exportToPng(dom, name) {
         const httpsrc = getImageUrl(image, {w: '100', h: '100', fit: 'cover' });
         console.log(httpsrc);
         canvas.remove()
+        var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Client-ID acf461eafa3d6b8");
+
+  var formdata = new FormData();
+  formdata.append("image", image);
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: formdata,
+    redirect: 'follow'
+  };
+
+  fetch("https://api.imgur.com/3/image", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
     });
   }
 
