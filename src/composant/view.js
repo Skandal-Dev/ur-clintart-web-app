@@ -49,14 +49,18 @@ function exportToPng(dom, name) {
                                                     allowTaint: true
                                                 })
     .then(function(canvas) {
-        //document.body.appendChild(canvas);
-        const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+
+        const img = new Image();
+        //const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+        const image = canvas.toDataURL('image/png').replace('image/octet-stream', 'image/png')
+        console.log(image);
         const a = document.createElement('a')
         a.setAttribute('download', name+'.png')
         a.setAttribute('href', image)
         a.click()
-        const src = getImageUrl(image, {w: '100', h: '100', fit: 'cover' });
-        console.log(src);
+        img.src= image;
+        const httpsrc = getImageUrl(image, {w: '100', h: '100', fit: 'cover' });
+        console.log(httpsrc);
         canvas.remove()
     });
   }
@@ -64,7 +68,7 @@ function exportToPng(dom, name) {
 
   export  default function Button() {
     const container = useRef(null);
-    const [nameCard, setNameCard] = useState("3X2HASH");
+    const [nameCard, setNameCard] = useState(" ");
     const [damage, setDamage] = useState(5);
     const [power, setPower] = useState(4);
     const [ability, setAbility] = useState("ability");
@@ -93,14 +97,13 @@ function exportToPng(dom, name) {
         name_card={nameCard} damage={damage} power={power} ability={ability}
         bonus={bonus} lvl={lvl} clan={clan} rarity={rarity}
         img={img} prismatic={prismatic} imageSize={imageSize}>
-
         </View>
+
         <div id="b">
             <button className="btn btn-primary sp  p-4 btn-lg play-button d-none d-md-inline   -block l-height-5"
                 onClick={() => exportToPng(container.current, nameCard)}> IMAGE DDL </button>
 
             <button className="btn button-prism" >
-
                 take a screenshot for PRISMATIC & GIF version
             </button>
         </div>

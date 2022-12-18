@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ImageUploader from "react-images-upload";
+import deepai from "deepai";
 
 const arr_logo = [
     "ALLSTARS",
@@ -90,7 +91,7 @@ class Editor extends React.Component{
         this.handleLogo = this.handleLogo.bind(this);
         this.handlePrismatic = this.handlePrismatic.bind(this);
         this.handleImageSize = this.handleImageSize.bind(this);
-
+        this.openAi = this.openAi.bind(this);
     }
 
     setImageSize(val){
@@ -226,7 +227,9 @@ class Editor extends React.Component{
     }
 
 
-
+    openAi(){
+      window.open('https://deepai.org/machine-learning-model/text2img','_blank');
+    }
 
     render(){
 
@@ -295,6 +298,7 @@ class Editor extends React.Component{
                         <input type="range" onChange={this.handleImageSize} min="0" max="200" name="imagesize"/>
                     </div>
 
+
                 </div>
 
                 <div className="flex-right">
@@ -330,6 +334,9 @@ class Editor extends React.Component{
 
                     <div className="form-box">
                         <ImgFileUpload setImg={this.props.setImg}/>
+
+
+                        <button className="btn btn-lg"><a onClick={this.openAi}>  Auto AI Image creator base on text </a> </button>
                     </div>
 
                 </div>
