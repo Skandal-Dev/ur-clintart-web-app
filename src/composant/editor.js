@@ -228,7 +228,6 @@ class Editor extends React.Component{
 
 
     openAi(){
-      window.open('https://deepai.org/machine-learning-model/text2img','_blank');
     }
 
     render(){
