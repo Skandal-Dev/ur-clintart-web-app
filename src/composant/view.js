@@ -68,7 +68,7 @@ function exportToPng(dom, name) {
 
   export  default function Button() {
     const container = useRef(null);
-    const [nameCard, setNameCard] = useState(" ");
+    const [nameCard, setNameCard] = useState("BIG MONSTER");
     const [damage, setDamage] = useState(5);
     const [power, setPower] = useState(4);
     const [ability, setAbility] = useState("ability");
