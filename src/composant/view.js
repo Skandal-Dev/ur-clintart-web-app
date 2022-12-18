@@ -61,7 +61,10 @@ function exportToPng(dom, name) {
         img.src= image;
         const httpsrc = getImageUrl(image, {w: '100', h: '100', fit: 'cover' });
         console.log(httpsrc);
-    
+        canvas.remove()
+
+      
+    });
   }
 
 
