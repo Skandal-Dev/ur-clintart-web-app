@@ -335,7 +335,6 @@ class Editor extends React.Component{
                         <ImgFileUpload setImg={this.props.setImg}/>
 
 
-                        <button className="btn btn-lg"><a onClick={this.openAi}>  Auto AI Image creator base on text </a> </button>
                     </div>
 
                 </div>
