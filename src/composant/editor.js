@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ImageUploader from "react-images-upload";
-import deepai from "deepai";
 
 const arr_logo = [
     "ALLSTARS",
@@ -78,7 +77,10 @@ class Editor extends React.Component{
             lvl: this.props.lvl,
             rarity: this.props.rarity,
             clan : this.props.logo,
-            imageSize: this.props.imageSize
+            imageSize: this.props.imageSize,
+            image: this.props.image,
+            top: this.props.top,
+            left: this.props.left
         };
 
         this.handleChangeName = this.handleChangeName.bind(this);
@@ -92,7 +94,26 @@ class Editor extends React.Component{
         this.handlePrismatic = this.handlePrismatic.bind(this);
         this.handleImageSize = this.handleImageSize.bind(this);
         this.openAi = this.openAi.bind(this);
+        this.handleImg = this.handleImg.bind(this);
+        /*this.handleImage = this.handleImage.bind(this);
+        this.handleTop = this.handleTop.bind(this);
+        this.handleLeft = this.handleLeft.bind(this);*/
     }
+
+    /*
+
+    setTop(val){
+      this.props.setTop(val);
+    }
+
+    setLeft(val){
+      this.props.setTop(val);
+    }*/
+
+    handleImg(event){
+      this.props.setImg(event.target.value)
+    }
+
 
     setImageSize(val){
       this.props.setImageSize(val);
@@ -333,6 +354,7 @@ class Editor extends React.Component{
 
                     <div className="form-box">
                         <ImgFileUpload setImg={this.props.setImg}/>
+                        <input type="text" onChange={this.handleImg} name="img" placeholder="Or Paste Image Url here"/>
 
 
                     </div>
