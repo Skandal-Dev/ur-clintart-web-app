@@ -10,6 +10,7 @@ import { useState } from 'react';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 import html2canvas from 'html2canvas';
 import getImageUrl from 'simple-image-cdn';
+import axios from 'axios';
 
 
 function resizeCanvas(canvas, newHeight, newWidth)
@@ -26,7 +27,23 @@ function resizeCanvas(canvas, newHeight, newWidth)
 
 
 function Share(dom, name){
-  console.log(dom);
+  axios.post("http://localhost:3030/add", {
+    nameCard: dom.nameCard,
+    lvl: dom.lvl,
+    rarity: dom.rarity,
+    power: dom.power,
+    damage: dom.damage,
+    img: dom.img,
+    imageSize: dom.imageSize,
+    clan: dom.clan ,
+    ability: dom.ability,
+    bonus: dom.bonus,
+    x: dom.x,
+    y: dom.y,
+    prismatic: 'true'
+  }).then((response) => {
+      console.log(response);
+  }).catch(error => console.log('error'))
 }
 
 function handleImagePosition(){

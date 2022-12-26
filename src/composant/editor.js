@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ImageUploader from "react-images-upload";
 
+
 const arr_logo = [
     "ALLSTARS",
     "BANGERS",
