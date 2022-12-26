@@ -28,7 +28,7 @@ console.log('Connected to PlanetScale!')
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 
-app.post(`/add`, jsonParser, (req, res) => {
+app.post(`http://urban-rivals-clint-artweb.netlify.app/add`, jsonParser, (req, res) => {
   console.log(req.body);
   connection.query('INSERT INTO `CDsS` (nameCard, lvl, rarity, power, damage, img, imageSize, clan , ability, bonus, x , y, prismatic) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)', [req.body.nameCard, req.body.lvl, req.body.rarity , req.body.power , req.body.damage , req.body.img , req.body.imageSize, req.body.clan, req.body.ability, req.body.bonus, req.body.x , req.body.y , req.body.prismatic],(error,
   results) => {
