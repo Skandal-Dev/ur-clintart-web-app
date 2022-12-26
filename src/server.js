@@ -10,6 +10,7 @@ app.use("/", proxy());
 var proxy = require('html2canvas-proxy');
 var express = require('express');
 const cors = require('cors');
+const path = require('path');
 var app = express();
 var port = (process.env.PORT || 3030);
 var bodyParser = require('body-parser')
@@ -24,6 +25,8 @@ const mysql = require('mysql2')
 const connection = mysql.createConnection(process.env.DATABASE_URL)
 console.log('Connected to PlanetScale!')
 
+
+app.use(express.static(path.join(__dirname,"public")));
 
 app.post("/add", jsonParser, (req, res) => {
   console.log(req.body);
