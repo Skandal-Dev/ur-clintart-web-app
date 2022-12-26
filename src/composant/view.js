@@ -27,7 +27,7 @@ function resizeCanvas(canvas, newHeight, newWidth)
 
 
 function Share(dom, name){
-  axios.post("http://localhost:3030/add", {
+  axios.post("http://urban-rivals-clint-artweb.netlify.app/add", {
     nameCard: dom.nameCard,
     lvl: dom.lvl,
     rarity: dom.rarity,
