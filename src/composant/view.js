@@ -27,7 +27,7 @@ function resizeCanvas(canvas, newHeight, newWidth)
 
 
 function Share(dom, name){
-  axios.post("localhost:3030/add", {
+  axios.post("http://localhost:3030/add", {
     nameCard: dom.nameCard,
     lvl: dom.lvl,
     rarity: dom.rarity,
