@@ -24,7 +24,11 @@ require('dotenv').config()
 const mysql = require('mysql2')
 const connection = mysql.createConnection(process.env.DATABASE_URL)
 console.log('Connected to PlanetScale!')
-
+app.use(cors({
+  origin: ["https://urban-rivals-clint-artweb.netlify.app"], // the link of my front-end app on Netlify
+  methods: ["GET", "POST"],
+  credentials: true
+}))
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 
