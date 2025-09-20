@@ -17,7 +17,7 @@ Compatible on multiple device browser, can be installed as web app on your table
 # Use on your computer
 
 Install project dependencies
-> npm install;
+> npm install ajv@6.12.6 ajv-keywords@3.5.2 --save-dev --legacy-peer-deps;
 
 
 Run Project
