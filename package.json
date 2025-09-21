@@ -27,6 +27,9 @@
     "simple-image-cdn": "^0.0.7",
     "web-vitals": "^2.1.2"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
