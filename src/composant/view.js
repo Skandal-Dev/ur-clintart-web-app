@@ -230,7 +230,7 @@ class View extends React.Component{
         return (
             <div  id="view">
 
-            <div id="card" className={`ur-card card-${this.props.rarity} card-bg-${prism} card-${prism}`} ref={this.props.refference}>
+            <div id="card" className={`ur-card card-${this.props.rarity} card-bg-${this.props.rarity} card-bg-${prism} card-${prism}`} ref={this.props.refference}>
                 <Draggable  onStop={this.handleStop}>
                   <img draggable="false" className="card-picture" src={this.props.img} style={{width: `${this.props.imageSize}%`}} data-src="" alt="picture"/>
                 </Draggable>
@@ -254,10 +254,10 @@ class View extends React.Component{
                             </div>
                             <div className="h5 card-power m-0">{this.props.power}</div>
                             <div className="h5 card-damage m-0">{this.props.damage}</div>
-                            <div className="card-ability text-black">
+                            <div className="card-ability">
                                 {this.props.ability}
                             </div>
-                            <div className="card-bonus text-black">{this.props.bonus}</div>
+                            <div className="card-bonus">{this.props.bonus}</div>
 
                         </div>
 

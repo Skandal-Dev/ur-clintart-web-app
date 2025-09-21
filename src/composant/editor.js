@@ -287,7 +287,17 @@ class Editor extends React.Component{
     }
 
     handlePrismatic(event){
-            this.setPrismatic(event.target.value);
+             const val = event.target.value;
+    this.setPrismatic(val);
+
+    // Si on est sur un collector prismatic, on force la rareté "l" (collector)
+    const collectorValues = ["m1","gs","ga","m2","m3"];
+    if(collectorValues.includes(val)) {
+        this.setRarity("cr"); // "l" correspond à la rareté collector
+    } else {
+        // si None ou autre, on peut remettre la rareté normale mémorisée
+        this.setRarity(this.state.lastNormalRarity || this.props.rarity || "c");
+    }
     }
 
 
