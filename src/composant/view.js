@@ -149,8 +149,8 @@ function exportToPng(dom, name) {
             <button className="btn btn-primary sp  p-4 btn-lg play-button d-none d-md-inline   -block l-height-5"
                 onClick={() => exportToPng(container.current, nameCard)}> IMAGE DDL </button>
 
-            <button className="btn btn-primary sp  p-4 btn-lg play-button d-none d-md-inline   -block l-height-5"
-                    onClick={() => Share(array)}> Share </button>
+            {/*<button className="btn btn-primary sp  p-4 btn-lg play-button d-none d-md-inline   -block l-height-5"
+                    onClick={() => Share(array)}> Share </button>*/}
 
             <button className="btn button-prism" >
                 take a screenshot for PRISMATIC & GIF version
@@ -165,7 +165,7 @@ function exportToPng(dom, name) {
 
         setNameCard={setNameCard} setDamage={setDamage} setPower={setPower} setAbility={setAbility}
         setBonus={setBonus} setLvl={setLvl} setLogo={setClan} setRarity={setRarity}
-        setImg={setImg} setPrismatic={setPrismatic} setImg={setImg} setImageSize={setImageSize} >
+        setImg={setImg} setPrismatic={setPrismatic} setImageSize={setImageSize} >
 
 
         </Editor>
@@ -221,21 +221,22 @@ class View extends React.Component{
 
         let lvl = this.props.lvl;
         let prism = "";
+        let bg = "";
         if (this.props.prismatic)
-            prism = "prismatic";
+            prism = this.props.prismatic;
         else
             prism = "";
 
         return (
             <div  id="view">
 
-            <div id="card" className={`ur-card card-${this.props.rarity} ${prism}`} ref={this.props.refference}>
+            <div id="card" className={`ur-card card-${this.props.rarity} card-bg-${prism} card-${prism}`} ref={this.props.refference}>
                 <Draggable  onStop={this.handleStop}>
                   <img draggable="false" className="card-picture" src={this.props.img} style={{width: `${this.props.imageSize}%`}} data-src="" alt="picture"/>
                 </Draggable>
-                    <div className={`card-layer layer-${this.props.rarity} ${prism}`}></div>
+                    <div className={`card-layer layer-${this.props.rarity} layer-${prism}`}></div>
                     <a className="card-link"></a>
-                        <div className={`card-top card-top-${this.props.rarity} ${prism}`}>
+                        <div className={`card-top card-top-${this.props.rarity} card-top-${prism}`}>
                             <a className="card-clan-link">
 
                                 <img className="card-clan img-fluid" src={`https://s.acdn.ur-img.com/urimages/clan/${this.props.clan}_42.png`} alt="All Stars"/>

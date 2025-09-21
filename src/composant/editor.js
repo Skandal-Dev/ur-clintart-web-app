@@ -7,6 +7,7 @@ const arr_logo = [
     "ALLSTARS",
     "BANGERS",
     "BERZERK",
+    "COSMOHNUTS",
     "DOMINION",
     "FANGPICLANG",
     "FREAKS",
@@ -33,6 +34,9 @@ const arr_logo = [
     "UPPERS",
     "VORTEX",
     "OBLIVION",
+    "ZENITH",
+    "LEADER",
+    "OCULUS"
     ];
 
 
@@ -81,7 +85,8 @@ class Editor extends React.Component{
             imageSize: this.props.imageSize,
             image: this.props.image,
             top: this.props.top,
-            left: this.props.left
+            left: this.props.left,
+            lastNormalRarity: this.props.rarity || "c"
         };
 
         this.handleChangeName = this.handleChangeName.bind(this);
@@ -203,49 +208,86 @@ class Editor extends React.Component{
         this.props.setRarity(val);
     }
 
-    handleRarity(event){
-        if ( event.target.value  === "leader" || event.target.value === "oculus")
-        {
-            this.handleLogo(event)
-            this.setRarity(event.target.value);
-        }
-        else{
-          this.setRarity(event.target.value);
-          if (this.props.clan === "LEADER" || this.props.clan == "OCULUS"){
-            this.setLogo("ALLSTARS");
-          }
-        }
+    handleRarity(event) {
+  const val = event.target.value; // peut être 'c','u','r','cr','m','l' ou 'leader'/'oculus'
+  const currentClan = this.props.clan || this.state.clan;
 
+  // Cas spécial : user choisit la rareté spéciale -> forcer clan spécial
+  if (val === 'leader') {
+    // sauvegarde si nécessaire
+    if (!['leader','oculus'].includes(this.state.lastNormalRarity)) {
+      this.setState({ lastNormalRarity: this.props.rarity || this.state.rarity });
     }
+    this.setLogo('LEADER');
+    this.setRarity('leader');
+    return;
+  }
+  if (val === 'oculus') {
+    if (!['leader','oculus'].includes(this.state.lastNormalRarity)) {
+      this.setState({ lastNormalRarity: this.props.rarity || this.state.rarity });
+    }
+    this.setLogo('OCULUS');
+    this.setRarity('oculus');
+    return;
+  }
+
+  // Rareté normale choisie :
+  // - si on est actuellement sur un clan spécial, on enregistre la rareté souhaitée
+  //   mais on ne l'applique pas (pour que le background spécial reste tant qu'on est sur LEADER/OCULUS)
+  if (currentClan === 'LEADER' || currentClan === 'OCULUS') {
+    this.setState({ lastNormalRarity: val }); // on mémorise uniquement
+    return;
+  }
+
+  // cas normal : appliquer la rareté tout de suite
+  this.setState({ lastNormalRarity: val });
+  this.setRarity(val);
+}
+
 
     setLogo(val){
         this.props.setLogo(val);
     }
 
-    handleLogo(event){
 
-        if (event.target.value === "oculus" || event.target.value === "leader" || this.props.clan === 'LEADER' || this.props.clan === 'OCULUS')
-        {
-            this.setLogo(event.target.value.toUpperCase())
-            this.setRarity("c");
-        }
-        else{
-            this.setLogo(event.target.value);
-            this.setRarity('c')
-        }
 
+    handleLogo(event) {
+  const val = event.target.value; // ex: "BANGERS", "LEADER", "OCULUS"
+  
+  // Si on choisit clan spécial -> sauvegarder la rareté normale et forcer la spéciale
+  if (val === 'LEADER') {
+    if (!['leader','oculus'].includes(this.state.lastNormalRarity)) {
+      this.setState({ lastNormalRarity: this.props.rarity || this.state.rarity });
     }
+    this.setLogo('LEADER');
+    this.setRarity('leader');
+    return;
+  }
+  if (val === 'OCULUS') {
+    if (!['leader','oculus'].includes(this.state.lastNormalRarity)) {
+      this.setState({ lastNormalRarity: this.props.rarity || this.state.rarity });
+    }
+    this.setLogo('OCULUS');
+    this.setRarity('oculus');
+    return;
+  }
+
+  // Clan normal sélectionné -> on restaure la rareté mémorisée (lastNormalRarity)
+  this.setLogo(val);
+  const restore = this.state.lastNormalRarity || this.props.rarity || 'c';
+  this.setRarity(restore);
+  // on peut garder lastNormalRarity inchangé ou la remettre à null si tu veux
+  // this.setState({ lastNormalRarity: restore });
+}
+
+
 
     setPrismatic(val){
         this.props.setPrismatic(val);
     }
 
     handlePrismatic(event){
-        if (event.target.checked)
-            this.setPrismatic("prismatic");
-        else
-            this.setPrismatic("");
-
+            this.setPrismatic(event.target.value);
     }
 
 
@@ -275,20 +317,17 @@ class Editor extends React.Component{
 
                     <div className="form-box">
                     <label htmlFor=""> Rarity</label>
-                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-c.png"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-c.png"/>
                         <input type="radio" onChange={this.handleRarity} name="rare" value="c"/>
-                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-u.png"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-u.png"/>
                         <input type="radio" onChange={this.handleRarity} name="rare" value="u"/>
-                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-r.png"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-r.png"/>
                         <input type="radio" onChange={this.handleRarity} name="rare" value="r"/>
-                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-cr.png"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-cr.png"/>
                         <input type="radio" onChange={this.handleRarity} name="rare" value="cr"/>
-                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-m.png"/>
-                        <input type="radio" onChange={this.handleRarity} name="rare" value="m"/>
-                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-l.png"/>
+                        
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-l.png"/>
                         <input type="radio" onChange={this.handleRarity} name="rare" value="l"/>
-                        <img height="25" src={`https://s.acdn.ur-img.com/urimages/clan/OCULUS_42.png`}/><input type="radio" name="rare" value="oculus"  onChange={this.handleRarity}/>
-                        <img height="25" src={`https://s.acdn.ur-img.com/urimages/clan/LEADER_42.png`}/><input type="radio" name="rare" value="leader"  onChange={this.handleRarity}/>
                     </div>
 
 
@@ -346,11 +385,28 @@ class Editor extends React.Component{
                         <input placeholder={this.props.damage} onChange={this.handleDamage} type="number" max={9} min={1}/>
                     </div>
 
-                    <div className="form-box" style={{'cursor':'not-allowed'}}>
-                    <label htmlFor=""> Prismatic </label>
 
-                        <img src="https://s.acdn.ur-img.com/img/v3/collection/icon-prismatic.png"/>
-                        <input type="checkbox" onChange={this.handlePrismatic} name="prismatic"/>
+                    <div className="form-box" style={{'cursor':'not-allowed'}}>
+                    <label htmlFor=""> Prismatic (None Collector) </label>
+                        <label>None
+                        <input type="radio" value="" onChange={this.handlePrismatic} name="prismatic"/></label>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-prismatic.png"/>
+                        <input type="radio" value="p" onChange={this.handlePrismatic} name="prismatic"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-s.png"/>
+                        <input type="radio" value="s" onChange={this.handlePrismatic} name="prismatic"/>
+                    </div>
+                    <div className="form-box" style={{'cursor':'not-allowed'}}>
+                        <label htmlFor=""> Prismatic Collector</label>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-m1.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="m1"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-gs.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="gs"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-ga.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="ga"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-m2.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="m2"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-m3.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="m3"/>
                     </div>
 
                     <div className="form-box">

@@ -91,7 +91,7 @@ h4{
 
     .card-star-off, .card-star-on {
         width: 12px !important;
-        height: 11.25px !important;
+        height: 11px !important;
         vertical-align: top !important;
         display: inline-block !important;
     }
@@ -225,19 +225,19 @@ h4{
   width: 168px !important;
 }
 .card-m {
-  background-image: url(ur-clintart/card-bg/bg-card-mt.gif);
+ /*background-image: url(ur-clintart/card-bg/bg-card-mt.gif);*/
 }
 
 
 
 .card-u {
-  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
-  background-image: url(ur-clintart/card-bg/bg-card-u.gif);
+  background-image: url(https://s.acdn.ur-img.com/img/v3/card/bg-brick-normal.png) 
+  /*background-image: url(ur-clintart/card-bg/bg-card-u.gif);*/
 }
 
 .card-c {
-  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
-  background-image: url(ur-clintart/card-bg/bg-card-c.gif);
+  background-image: url(	https://s.acdn.ur-img.com/img/v3/card/bg-brick-normal.png) 
+  /*background-image: url(ur-clintart/card-bg/bg-card-c.gif);*/
 
 }
 
@@ -248,22 +248,30 @@ h4{
 
 
 .card-r {
-  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
-  background-image: url(ur-clintart/card-bg/bg-card-r.gif);
-
+  background-image: url(	https://s.acdn.ur-img.com/img/v3/card/bg-brick-normal.png)
+  /*background-image: url(ur-clintart/card-bg/bg-card-r.gif);*/
 }
 
 .card-cr {
-  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
-  background-image: url(ur-clintart/card-bg/bg-card-cr.gif);
+   background-image: url(	https://s.acdn.ur-img.com/img/v3/card/bg-brick-normal.png)
 
 }
 
 
 .card-l {
-  /*background-image: url(/img/v3/card/bg-brick-m-2.png);*/
-  background-image: url(ur-clintart/card-bg/bg-card-ld.gif);
+   background-image: url(	https://s.acdn.ur-img.com/img/v3/card/bg-brick-normal.png);
+  /*background-image: url(ur-clintart/card-bg/bg-card-ld.gif);*/
 
+}
+
+.card-bg-m3 {
+    background-image: url(https://s.acdn.ur-img.com/img/v3/card/bg-brick-m3.png);
+    background-size: contain;
+   
+}
+
+.layer-c.layer-s {
+    background-image: url(https://s.acdn.ur-img.com/img/v3/card/bg-c-s.png);
 }
 
 .card-back-l, .card-m {
