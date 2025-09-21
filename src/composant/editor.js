@@ -290,10 +290,10 @@ class Editor extends React.Component{
              const val = event.target.value;
     this.setPrismatic(val);
 
-    // Si on est sur un collector prismatic, on force la rareté "l" (collector)
+    // Si on est sur un collector prismatic, on force la rareté "cr" (collector)
     const collectorValues = ["m1","gs","ga","m2","m3"];
     if(collectorValues.includes(val)) {
-        this.setRarity("cr"); // "l" correspond à la rareté collector
+        this.setRarity("cr"); // "cr" correspond à la rareté collector
     } else {
         // si None ou autre, on peut remettre la rareté normale mémorisée
         this.setRarity(this.state.lastNormalRarity || this.props.rarity || "c");
@@ -396,7 +396,7 @@ class Editor extends React.Component{
                     </div>
 
 
-                    <div className="form-box" style={{'cursor':'not-allowed'}}>
+                    <div className="form-box" style={{}}>
                     <label htmlFor=""> Prismatic (None Collector) </label>
                         <label>None
                         <input type="radio" value="" onChange={this.handlePrismatic} name="prismatic"/></label>
@@ -405,7 +405,7 @@ class Editor extends React.Component{
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-s.png"/>
                         <input type="radio" value="s" onChange={this.handlePrismatic} name="prismatic"/>
                     </div>
-                    <div className="form-box" style={{'cursor':'not-allowed'}}>
+                    <div className="form-box" style={{}}>
                         <label htmlFor=""> Prismatic Collector</label>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-m1.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="m1"/>
@@ -417,11 +417,26 @@ class Editor extends React.Component{
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="m2"/>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-m3.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="m3"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-i.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="i"/>
+                        <br></br>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-v1.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="v1"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-c1.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="c1"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-g1.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="g1"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-k1.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="k1"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-a1.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="a1"/>
+                        
+                        
                     </div>
 
-                    <div className="form-box">
+                    <div className="form-box" style={{'height': "170px"}}>
                         <ImgFileUpload setImg={this.props.setImg}/>
-                        <input type="text" onChange={this.handleImg} name="img" placeholder="Or Paste Image Url here"/>
+                        
 
 
                     </div>
