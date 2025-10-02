@@ -35,8 +35,20 @@ h4{
   top: -100px;
 }
 
+.black-t{
+  color: black !important;
+}
+
+.ur-card.card-s .card-bg-s
+ {
+    filter: saturate(0) !important;
+}
+
 
 @media screen and (max-width: 1354px) {
+
+ 
+
 
     .grid{
       margin-top: 0 !important;

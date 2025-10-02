@@ -286,19 +286,29 @@ class Editor extends React.Component{
         this.props.setPrismatic(val);
     }
 
-    handlePrismatic(event){
-             const val = event.target.value;
-    this.setPrismatic(val);
+    handlePrismatic(event) {
+        let val = event.target.value;
 
-    // Si on est sur un collector prismatic, on force la rareté "cr" (collector)
-    const collectorValues = ["m1","gs","ga","m2","m3"];
-    if(collectorValues.includes(val)) {
-        this.setRarity("cr"); // "cr" correspond à la rareté collector
-    } else {
-        // si None ou autre, on peut remettre la rareté normale mémorisée
-        this.setRarity(this.state.lastNormalRarity || this.props.rarity || "c");
+        // blocage selon le clan actuel
+        if (this.props.logo === 'LEADER' && val !== 'k1') {
+            val = 'k1'; // toujours k1 pour Leader
+        }
+        if (this.props.logo === 'OCULUS' && val !== 'v1') {
+            val = 'v1'; // toujours v1 pour Oculus
+        }
+
+
+        this.setPrismatic(val);
+
+        // Collector -> force "cr", sinon on remet la rareté normale
+        const collectorValues = ["m1","gs","ga","m2","m3,i","ar1","v1","c1","g1","k1","a1"];
+        if (collectorValues.includes(val)) {
+            this.setRarity("cr");
+        } else if (!['leader','oculus'].includes(this.props.rarity)) {
+            this.setRarity(this.state.lastNormalRarity || this.props.rarity || "c");
     }
-    }
+}
+
 
 
     openAi(){
@@ -351,13 +361,13 @@ class Editor extends React.Component{
 
 
                     <div className="form-box">
-                        <label htmlFor=""> Ability</label>
+                        <label htmlFor="" className="black-t"> Ability</label>
 
                         <input placeholder={this.props.ability} onChange={this.handleAbility} type="text"/>
                     </div>
 
                     <div className="form-box">
-                         <label htmlFor=""> Bonus</label>
+                         <label htmlFor="" className="black-t"> Bonus</label>
 
                         <input placeholder={this.props.bonus} onChange={this.handleBonus} type="text"/>
                     </div>
@@ -420,6 +430,8 @@ class Editor extends React.Component{
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-i.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="i"/>
                         <br></br>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-ar1.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="ar1"/>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-v1.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="v1"/>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-c1.png"/>
