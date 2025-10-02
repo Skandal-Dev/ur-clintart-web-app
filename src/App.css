@@ -45,6 +45,10 @@ h4{
 }
 
 
+.card-stars {
+      margin-top: -2px;
+}
+
 @media screen and (max-width: 1354px) {
 
  
