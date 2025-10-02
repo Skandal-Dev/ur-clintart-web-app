@@ -52,7 +52,9 @@ h4{
 @media screen and (max-width: 1354px) {
 
  
-
+  .card-stars {
+      margin-top: -0.5px;
+}
 
     .grid{
       margin-top: 0 !important;
