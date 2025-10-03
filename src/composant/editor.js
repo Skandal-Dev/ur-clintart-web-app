@@ -471,7 +471,7 @@ class Editor extends React.Component{
                         
                     </div>
 
-                    <div className="form-box" style={{'height': "170px"}}>
+                    <div className="form-box" style={{'height': "100px"}}>
                         <ImgFileUpload setImg={this.props.setImg}/>
                         
 

@@ -49,6 +49,14 @@ h4{
       margin-top: -2px;
 }
 
+
+.uploadIcon{
+  display: none !important;
+}
+.fileContainer p{
+
+  display: none !important;
+}
 @media screen and (max-width: 1354px) {
 
  
