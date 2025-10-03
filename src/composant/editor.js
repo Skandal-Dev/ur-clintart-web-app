@@ -297,16 +297,31 @@ class Editor extends React.Component{
             val = 'v1'; // toujours v1 pour Oculus
         }
 
+      
+
+        
+
+        // Collector -> force "cr", sinon on remet la rareté normale
+         const collectorValues = ["m1","gs","ga","m2","m3","i","ar1","v1","c1","g1","k1","a1"];
+        if (collectorValues.includes(val)) {
+            // avant d’écraser, on mémorise la rareté normale
+            if (!['cr','leader','oculus'].includes(this.props.rarity)) {
+            this.setState({ lastNormalRarity: this.props.rarity });
+            }
+            this.setRarity("cr");
+        } else if (!['leader','oculus'].includes(this.props.rarity)) {
+            // on restaure la rareté normale si ce n’est pas un collector
+            this.setRarity(this.state.lastNormalRarity || this.props.rarity || "c");
+        }
 
         this.setPrismatic(val);
 
-        // Collector -> force "cr", sinon on remet la rareté normale
-        const collectorValues = ["m1","gs","ga","m2","m3,i","ar1","v1","c1","g1","k1","a1"];
-        if (collectorValues.includes(val)) {
-            this.setRarity("cr");
-        } else if (!['leader','oculus'].includes(this.props.rarity)) {
-            this.setRarity(this.state.lastNormalRarity || this.props.rarity || "c");
-    }
+
+       
+
+        console.log("in:", event.target.value, "logo:", this.props.logo, "rarity:", this.props.rarity, "lastNormalRarity:", this.state.lastNormalRarity, "prismatic:", val);
+        console.log("out val:", val);
+
 }
 
 
@@ -343,8 +358,7 @@ class Editor extends React.Component{
                         <input type="radio" onChange={this.handleRarity} name="rare" value="u"/>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-r.png"/>
                         <input type="radio" onChange={this.handleRarity} name="rare" value="r"/>
-                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-cr.png"/>
-                        <input type="radio" onChange={this.handleRarity} name="rare" value="cr"/>
+                      
                         
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-l.png"/>
                         <input type="radio" onChange={this.handleRarity} name="rare" value="l"/>
@@ -417,22 +431,32 @@ class Editor extends React.Component{
                     </div>
                     <div className="form-box" style={{}}>
                         <label htmlFor=""> Prismatic Collector</label>
-                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-m1.png"/>
-                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="m1"/>
+                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-rarity-cr.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="cr"/>
+                       
+                          <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-ga.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="ga"/>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-gs.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="gs"/>
-                        <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-ga.png"/>
-                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="ga"/>
+                     
+                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-m1.png"/>
+                        <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="m1"/>
+                         <br></br>
+
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-m2.png"/>
+                    
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="m2"/>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-m3.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="m3"/>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-i.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="i"/>
-                        <br></br>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-ar1.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="ar1"/>
+
+                        <br></br>
+
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-v1.png"/>
+                        
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="v1"/>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-c1.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="c1"/>
@@ -440,6 +464,7 @@ class Editor extends React.Component{
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="g1"/>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-k1.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="k1"/>
+                        <br></br>
                         <img height="25" src="https://s.acdn.ur-img.com/img/v3/collection/icon-a1.png"/>
                         <input type="radio" onChange={this.handlePrismatic} name="prismatic" value="a1"/>
                         
